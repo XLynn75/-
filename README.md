@@ -1,14 +1,16 @@
-未定事件簿官方微博评论爬虫练手\n
-代码参考b站up主龙王山小青椒,侵删 \n
-代码部分主要使用max_id进行数据抓取，简要如下：\n
+未定事件簿官方微博评论爬虫练手
 
-1）设置url="https://m.weibo.cn/comments/hotflow?id=4572952227746524&mid=4572952227746524&max_id="+str(max_id)+"&max_id_type="+str(max_id_type) 抓取评论，当comment['ok']=1时，评论抓取成功。\n
+代码参考b站up主龙王山小青椒,侵删
 
-2）抓取comment中的text文本部分，使用re进行文本清理，去除不必要无意义内容。由于数据不多，整个文本内容直接放在一个列表中，如需导出，可另存为txt文本文件。\n
+代码部分主要使用max_id进行数据抓取，简要如下：
 
-3）由于while loop一直处于true的状态，不能自动停止，使用post_id进行查重。新建all_poid列表，每抓取一个评论，放入此评论id，如此id已经存在，返回false，停止loop。\n
+1）设置url="https://m.weibo.cn/comments/hotflow?id=4572952227746524&mid=4572952227746524&max_id="+str(max_id)+"&max_id_type="+str(max_id_type) 抓取评论，当comment['ok']=1时，评论抓取成功。
 
-4）反反爬，设置verify=false，设置休眠时间，亲测5s有效，3s过少还是会被拦截。\n
+2）抓取comment中的text文本部分，使用re进行文本清理，去除不必要无意义内容。由于数据不多，整个文本内容直接放在一个列表中，如需导出，可另存为txt文本文件。
+
+3）由于while loop一直处于true的状态，不能自动停止，使用post_id进行查重。新建all_poid列表，每抓取一个评论，放入此评论id，如此id已经存在，返回false，停止loop。
+
+4）反反爬，设置verify=false，设置休眠时间，亲测5s有效，3s过少还是会被拦截。
 
 5）绘图部分选择云图。使用jieba进行文本切割，第一次云图没有设置stopwords，导致无重点words。第二次绘制，汇总了中文停用词表，哈工大停用词表和四川大学机器智能实验室停用词库，并在多次绘制的基础上去除“电话”，“打电话”，“真的”等无用词语。配图为设置最大显示词汇量100时。
 
